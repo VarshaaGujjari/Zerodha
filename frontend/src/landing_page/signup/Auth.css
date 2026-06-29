@@ -1,0 +1,127 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f5f5f5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.auth-container {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-card {
+    width: 400px;
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.auth-title {
+    text-align: center;
+    color: #387ed1;
+    margin-bottom: 25px;
+    font-size: 2rem;
+}
+
+.auth-toggle {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.auth-toggle button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    background: #e9ecef;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.auth-toggle button:first-child {
+    border-radius: 8px 0 0 8px;
+}
+
+.auth-toggle button:last-child {
+    border-radius: 0 8px 8px 0;
+}
+
+.auth-toggle button.active {
+    background: #387ed1;
+    color: white;
+}
+
+.auth-toggle button:hover {
+    opacity: 0.9;
+}
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-form input {
+    padding: 12px;
+    margin-bottom: 18px;
+    border: 1px solid #dcdcdc;
+    border-radius: 8px;
+    font-size: 15px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.auth-form input:focus {
+    border-color: #387ed1;
+    box-shadow: 0 0 5px rgba(56, 126, 209, 0.3);
+}
+
+.auth-form button {
+    padding: 12px;
+    background: #387ed1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.auth-form button:hover {
+    background: #2d6db8;
+}
+
+.auth-footer {
+    margin-top: 20px;
+    text-align: center;
+    color: #666;
+    font-size: 14px;
+}
+
+.auth-footer span {
+    color: #387ed1;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.auth-footer span:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+    .auth-card {
+        width: 90%;
+        padding: 30px 20px;
+    }
+
+    .auth-title {
+        font-size: 1.8rem;
+    }
+}
