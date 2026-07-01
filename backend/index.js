@@ -1,21 +1,22 @@
 
-
 require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const holdingsRoutes = require("./routes/holdingsRoutes");
 
 const { HoldingsModel } = require("./model/HoldingsModel");
 
 const { PositionsModel } = require("./model/PositionsModel");
 const { OrdersModel } = require("./model/OrdersModel");
 const authRoutes = require("./routes/authRoutes");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+// const bcrypt = require("bcryptjs");
+// const jwt = require("jsonwebtoken");
+const authMiddleware = require("./middleware/auth");
 
-const { UserModel } = require("./model/UserModel");
+// const { UserModel } = require("./model/UserModel");
 
 const PORT = process.env.PORT || 3002;
 const uri = process.env.MONGO_URL;
@@ -196,10 +197,7 @@ app.use(authRoutes);
 //   res.send("Done!");
 // });
 
-app.get("/allHoldings", async (req, res) => {
-  let allHoldings = await HoldingsModel.find({});
-  res.json(allHoldings);
-});
+
 
 app.get("/allPositions", async (req, res) => {
   let allPositions = await PositionsModel.find({});
@@ -236,102 +234,103 @@ app.post("/newOrder", async (req, res) => {
   res.send("Order Saved!");
 });
 
-app.post("/signup", async (req, res) => {
-  try {
-    const { name, email, password } = req.body;
+// app.post("/signup", async (req, res) => {
+//   try {
+//     const { name, email, password } = req.body;
 
-    const existingUser = await UserModel.findOne({
-      email,
-    });
+//     const existingUser = await UserModel.findOne({
+//       email,
+//     });
 
-    if (existingUser) {
-      return res.status(400).json({
-        message: "User already exists",
-      });
-    }
+//     if (existingUser) {
+//       return res.status(400).json({
+//         message: "User already exists",
+//       });
+//     }
 
-    const hashedPassword =
-      await bcrypt.hash(password, 10);
+//     const hashedPassword =
+//       await bcrypt.hash(password, 10);
 
-    const newUser = new UserModel({
-      name,
-      email,
-      password: hashedPassword,
-    });
+//     const newUser = new UserModel({
+//       name,
+//       email,
+//       password: hashedPassword,
+//     });
 
-    await newUser.save();
+//     await newUser.save();
 
-    const token = jwt.sign(
-      {
-        userId: newUser._id,
-      },
-      process.env.JWT_SECRET,
-      {
-        expiresIn: "7d",
-      }
-    );
+//     const token = jwt.sign(
+//       {
+//         userId: newUser._id,
+//       },
+//       process.env.JWT_SECRET,
+//       {
+//         expiresIn: "7d",
+//       }
+//     );
 
-    res.status(201).json({
-      message: "Signup Successful",
-      token,
-    });
+//     res.status(201).json({
+//       message: "Signup Successful",
+//       token,
+//     });
 
-  } catch (err) {
-    res.status(500).json({
-      error: err.message,
-    });
-  }
-});
+//   } catch (err) {
+//     res.status(500).json({
+//       error: err.message,
+//     });
+//   }
+// });
 
-app.post("/login", async (req, res) => {
-  try {
-    const { email, password } = req.body;
+// app.post("/login", async (req, res) => {
+//   try {
+//     const { email, password } = req.body;
 
-    // Check if user exists
-    const user = await UserModel.findOne({ email });
+//     // Check if user exists
+//     const user = await UserModel.findOne({ email });
 
-    if (!user) {
-      return res.status(400).json({
-        message: "Invalid Email or Password",
-      });
-    }
+//     if (!user) {
+//       return res.status(400).json({
+//         message: "Invalid Email or Password",
+//       });
+//     }
 
-    // Compare entered password with hashed password
-    const isMatch = await bcrypt.compare(
-      password,
-      user.password
-    );
+//     // Compare entered password with hashed password
+//     const isMatch = await bcrypt.compare(
+//       password,
+//       user.password
+//     );
 
-    if (!isMatch) {
-      return res.status(400).json({
-        message: "Invalid Email or Password",
-      });
-    }
+//     if (!isMatch) {
+//       return res.status(400).json({
+//         message: "Invalid Email or Password",
+//       });
+//     }
 
-    // Create JWT Token
-    const token = jwt.sign(
-      {
-        userId: user._id,
-      },
-      process.env.JWT_SECRET,
-      {
-        expiresIn: "7d",
-      }
-    );
+//     // Create JWT Token
+//     const token = jwt.sign(
+//       {
+//         userId: user._id,
+//       },
+//       process.env.JWT_SECRET,
+//       {
+//         expiresIn: "7d",
+//       }
+//     );
 
-    res.status(200).json({
-      message: "Login Successful",
-      token,
-    });
+//     res.status(200).json({
+//       message: "Login Successful",
+//       token,
+//     });
 
-  } catch (err) {
-    res.status(500).json({
-      error: err.message,
-    });
-  }
-});
+//   } catch (err) {
+//     res.status(500).json({
+//       error: err.message,
+//     });
+//   }
+// });
 
 app.use("/auth", authRoutes);
+app.use("/holdings", holdingsRoutes);
 
 app.listen(PORT, () => {
   console.log("App started!");
