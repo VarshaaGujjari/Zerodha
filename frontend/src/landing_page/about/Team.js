@@ -6,7 +6,7 @@ function Team() {
         
        
 
-        <div className="container">
+        <div className="container" >
             <div className="row p-3 mt-5 border-top">
                 <h1 className="text-center ">People</h1>
             </div>

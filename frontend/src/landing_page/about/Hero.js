@@ -2,7 +2,7 @@ import React from 'react'
 
 function Hero() {
     return ( 
-        <div className='container p-2'>
+        <div className='container p-2' >
             <div className='row p-5 m-5 align-items-center text-center justify-content-center'>
             
                 <h3 className='fs-4'>We pioneered the discount broking model in India. <br/>

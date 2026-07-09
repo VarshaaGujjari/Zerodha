@@ -7,7 +7,9 @@ const { HoldingsModel } = require("../model/HoldingsModel");
 
 const getAllHoldings = async (req, res) => {
   try {
-    const allHoldings = await HoldingsModel.find({});
+    const allHoldings = await HoldingsModel.find({
+      userId: req.user.userId,
+    });
 
     res.status(200).json(allHoldings);
   } catch (error) {

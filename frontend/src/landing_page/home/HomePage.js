@@ -19,7 +19,8 @@ function HomePage() {
             <Stats/>
             <Pricing/>
             <Education/>
-            <OpenAccount/>
+             <OpenAccount/>
+            {/* <h1>Home Page Works</h1> */}
             {/* <Footer></Footer> */}
             
         </>

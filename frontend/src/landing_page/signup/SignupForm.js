@@ -108,32 +108,44 @@ function SignupForm() {
   const handleSignup = async (e) => {
     e.preventDefault();
 
+    // try {
+    //   const res = await axios.post(
+    //     // "http://localhost:3002/signup"
+    //     // "http://localhost:3002/auth/signup",
+    //     "http://localhost:3002/auth/register",
+    //     {
+    //       name,
+    //       email,
+    //       password,
+    //     }
+    //   );
+
+    //   // Save JWT token
+    //   localStorage.setItem("token", res.data.token);
+
+    //   alert("Signup Successful!");
+
+    //   // Redirect to Dashboard
+    //   window.location.href = "http://localhost:3001";
+
+    // } catch (err) {
+    //   console.log(err);
+
+    //   alert(
+    //     err.response?.data?.message ||
+    //       "Signup Failed"
+    //   );
+    // }
+
     try {
-      const res = await axios.post(
-        "http://localhost:3002/signup",
-        {
-          name,
-          email,
-          password,
-        }
-      );
+    await axios.post("http://localhost:3002/auth/register", { name, email, password });
+    alert("Signup Successful! Please log in.");
+    window.location.href = "/Signup"; // back to the auth page, now showing login
+  } catch (err) {
+    alert(err.response?.data?.message || "Signup Failed");
+  }
 
-      // Save JWT token
-      localStorage.setItem("token", res.data.token);
 
-      alert("Signup Successful!");
-
-      // Redirect to Dashboard
-      window.location.href = "http://localhost:3001";
-
-    } catch (err) {
-      console.log(err);
-
-      alert(
-        err.response?.data?.message ||
-          "Signup Failed"
-      );
-    }
   };
 
   return (

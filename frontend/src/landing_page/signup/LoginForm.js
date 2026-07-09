@@ -1,27 +1,44 @@
 import React, { useState } from "react";
 import axios from "axios";
+// import { useNavigate } from "react-router-dom";
 
 function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
     try {
       const res = await axios.post(
-        "http://localhost:3002/login",
+        "http://localhost:3002/auth/login",
+        // "http://localhost:3002/login",
         {
           email,
           password,
         }
       );
 
+      console.log("Response from backend:", res.data);
+
       localStorage.setItem("token", res.data.token);
+      localStorage.setItem("user", JSON.stringify(res.data.user));
+
+      console.log("Token after saving:", localStorage.getItem("token"));
 
       alert("Login Successful!");
 
       window.location.href = "http://localhost:3001";
+      // window.location.href = "/dashboard";
+      // navigate("/dashboard");
+
+
+      // localStorage.setItem("token", res.data.token);
+
+      // alert("Login Successful!");
+
+      // window.location.href = "http://localhost:3001";
     } catch (err) {
       console.log(err);
 

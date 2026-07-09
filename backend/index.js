@@ -5,8 +5,12 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const holdingsRoutes = require("./routes/holdingsRoutes");
 
+const holdingsRoutes = require("./routes/holdingsRoutes");
+const positionsRoutes = require("./routes/positionsRoutes");
+const ordersRoutes = require("./routes/ordersRoutes");
+const stocksRoutes = require("./routes/stocksRoutes");
+const seedRoutes = require("./routes/seedRoutes");
 const { HoldingsModel } = require("./model/HoldingsModel");
 
 const { PositionsModel } = require("./model/PositionsModel");
@@ -26,7 +30,14 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 app.use(express.json());
-app.use(authRoutes);
+// app.use(authRoutes);
+
+app.use("/auth", authRoutes);
+app.use("/holdings", holdingsRoutes);
+app.use("/positions", positionsRoutes);
+app.use("/orders", ordersRoutes);
+app.use("/stocks", stocksRoutes);
+app.use("/seed", seedRoutes);
 
 // app.get("/addHoldings", async (req, res) => {
 //   let tempHoldings = [
@@ -199,11 +210,6 @@ app.use(authRoutes);
 
 
 
-app.get("/allPositions", async (req, res) => {
-  let allPositions = await PositionsModel.find({});
-  res.json(allPositions);
-});
-
 // app.post("/newOrder", async (req, res) => {
 //   let newOrder = new OrdersModel({
 //     name: req.body.name,
@@ -217,22 +223,7 @@ app.get("/allPositions", async (req, res) => {
 //   res.send("Order saved!");
 // });
 
-app.post("/newOrder", async (req, res) => {
-  console.log("Order received:", req.body);
 
-  let newOrder = new OrdersModel({
-    name: req.body.name,
-    qty: req.body.qty,
-    price: req.body.price,
-    mode: req.body.mode,
-  });
-
-  await newOrder.save();
-
-  console.log("Order saved!");
-
-  res.send("Order Saved!");
-});
 
 // app.post("/signup", async (req, res) => {
 //   try {
@@ -329,8 +320,7 @@ app.post("/newOrder", async (req, res) => {
 //   }
 // });
 
-app.use("/auth", authRoutes);
-app.use("/holdings", holdingsRoutes);
+
 
 app.listen(PORT, () => {
   console.log("App started!");
