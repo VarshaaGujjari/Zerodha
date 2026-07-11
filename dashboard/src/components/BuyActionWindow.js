@@ -5,11 +5,6 @@ import axios from "axios";
 import GeneralContext from "./GeneralContext";
 import "./BuyActionWindow.css";
 
-// import { toast } from "react-toastify";
-// // import "react-toastify/dist/ReactToastify.css";
-// import { ToastContainer } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-
 const BuyActionWindow = ({ uid }) => {
   const generalContext = useContext(GeneralContext);
 
@@ -23,7 +18,6 @@ const BuyActionWindow = ({ uid }) => {
       // User not logged in
       if (!token) {
         alert("Please login first.");
-        // toast.error("Please login first.");
         return;
       }
 
@@ -47,10 +41,7 @@ const BuyActionWindow = ({ uid }) => {
         }
       );
 
-     
-
       alert(response.data.message);
-      // toast.success(response.data.message);
 
       generalContext.closeBuyWindow();
     } catch (err) {
@@ -60,11 +51,6 @@ const BuyActionWindow = ({ uid }) => {
         err.response?.data?.message ||
           "Something went wrong while placing the order."
       );
-
-      // toast.error(
-      //   err.response?.data?.message ||
-      //     "Something went wrong while placing the order."
-      // );
     }
   };
 

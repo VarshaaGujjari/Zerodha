@@ -1,7 +1,3 @@
-// app.get("/allHoldings", authMiddleware, async (req, res) => {
-//   let allHoldings = await HoldingsModel.find({});
-//   res.json(allHoldings);
-// });
 
 const { HoldingsModel } = require("../model/HoldingsModel");
 

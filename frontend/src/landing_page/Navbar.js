@@ -1,8 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-
-
 function Navbar() {
   return ( 
     <div className="sticky-top pl-5">
@@ -67,5 +65,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-// export default Navbar;

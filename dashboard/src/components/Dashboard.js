@@ -1,4 +1,4 @@
-// import React from "react";
+
 import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
@@ -14,18 +14,6 @@ import { GeneralContextProvider } from "./GeneralContext";
 
 
 const Dashboard = () => {
-
-  // useEffect(() => {
-  //   const params = new URLSearchParams(window.location.search);
-  //   const token = params.get("token");
-
-  //   if (token) {
-  //     localStorage.setItem("token", token);
-
-  //     // Remove token from URL
-  //     window.history.replaceState({}, document.title, "/");
-  //   }
-  // }, []);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);

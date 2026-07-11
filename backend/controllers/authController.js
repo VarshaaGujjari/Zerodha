@@ -1,6 +1,4 @@
-
 const bcrypt = require("bcrypt");
-
 const { UserModel } = require("../model/UserModel");
 
 const registerUser = async (req, res) => {
@@ -80,18 +78,7 @@ const loginUser = async (req, res) => {
             });
         }
 
-        // Generate JWT
-        // const token = jwt.sign(
-        //     {
-        //         id: user._id,
-        //         email: user.email,
-        //     },
-        //     process.env.JWT_SECRET,
-        //     {
-        //         expiresIn: "1d",
-        //     }
-        // );
-
+        // Generate JWT token
         const token = jwt.sign(
         {
             userId: user._id,

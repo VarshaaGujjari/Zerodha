@@ -1,23 +1,3 @@
-// // const { OrdersModel } = require("./model/OrdersModel");
-// const { OrdersModel } = require("../model/OrdersModel");
-
-// app.post("/newOrder", async (req, res) => {
-//   console.log("Order received:", req.body);
-
-//   let newOrder = new OrdersModel({
-//     name: req.body.name,
-//     qty: req.body.qty,
-//     price: req.body.price,
-//     mode: req.body.mode,
-//   });
-
-//   await newOrder.save();
-
-//   console.log("Order saved!");
-
-//   res.send("Order Saved!");
-// });
-
 const { OrdersModel } = require("../model/OrdersModel");
 const { HoldingsModel } = require("../model/HoldingsModel");
 const { PositionsModel } = require("../model/PositionsModel");
@@ -26,16 +6,6 @@ const { PositionsModel } = require("../model/PositionsModel");
 const createOrder = async (req, res) => {
   try {
     console.log("Order received:", req.body);
-
-    // const newOrder = new OrdersModel({
-    //   userId: req.user.userId,
-    //   name: req.body.name,
-    //   qty: req.body.qty,
-    //   price: req.body.price,
-    //   mode: req.body.mode,
-    // });
-
-    // await newOrder.save();
 
     if (req.body.mode === "BUY") {
 
@@ -76,13 +46,9 @@ const createOrder = async (req, res) => {
 
           if (position) {
             
-
-
             const oldQty = position.qty;
 
             position.qty += Number(req.body.qty);
-
-
 
             position.avg =
               ((position.avg * oldQty) + (Number(req.body.price) * Number(req.body.qty))) /
@@ -205,11 +171,9 @@ await newOrder.save();
 const getOrders = async (req,res)=>{
 
     try{
-
         const orders = await OrdersModel.find({
             userId:req.user.userId
         });
-
         res.json(orders);
 
     }catch(err){

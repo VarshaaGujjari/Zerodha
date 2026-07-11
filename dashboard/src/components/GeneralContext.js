@@ -48,9 +48,6 @@ export const GeneralContextProvider = (props) => {
       {props.children}
       {isBuyWindowOpen && <BuyActionWindow uid={selectedStockUID} />}
       {isSellWindowOpen && <SellActionWindow uid={selectedStockUID} />}
-      {/* {isSellWindowOpen && (
-  <SellActionWindow uid={selectedStockUID} />
-)} */}
     </GeneralContext.Provider>
   );
 };

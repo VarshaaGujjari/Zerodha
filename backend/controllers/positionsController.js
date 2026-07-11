@@ -1,8 +1,3 @@
-// app.get("/allPositions", async (req, res) => {
-//   let allPositions = await PositionsModel.find({});
-//   res.json(allPositions);
-// });
-
 const { PositionsModel } = require("../model/PositionsModel");
 
 const getAllPositions = async (req, res) => {

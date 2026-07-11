@@ -100,20 +100,16 @@ const Menu = () => {
           </li>
         </ul>
         <hr />
-        {/* <div className="profile" onClick={handleProfileClick}>
-          <div className="avatar">ZU</div>
-          <p className="username">USERID</p>
-        </div> */}
 
         <div className="profile">
 
-  <div
-    className="profile-header"
-    onClick={handleProfileClick}
-  >
-    <div className="avatar">ZU</div>
-    <p className="username">{user ? user.name : "User"}</p>
-  </div>
+          <div
+            className="profile-header"
+            onClick={handleProfileClick}
+          >
+            <div className="avatar">ZU</div>
+            <p className="username">{user ? user.name : "User"}</p>
+          </div>
 
   {isProfileDropdownOpen && (
 
