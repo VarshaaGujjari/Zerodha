@@ -17,7 +17,8 @@ const Orders = () => {
         }
 
         const res = await axios.get(
-          "http://localhost:3002/orders",
+          // "http://localhost:3002/orders",
+          "https://zerodha-ky1a.onrender.com/orders",
           {
             headers: {
               Authorization: `Bearer ${token}`,

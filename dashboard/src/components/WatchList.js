@@ -22,7 +22,10 @@ const WatchList = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/stocks")
+      .get(
+        // "http://localhost:3002/stocks",
+        "https://zerodha-ky1a.onrender.com/stocks"
+      )
       .then((res) => {
         setStocks(res.data);
       })

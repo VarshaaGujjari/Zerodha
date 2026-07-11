@@ -20,7 +20,7 @@ const Menu = () => {
 
   const handleLogout = () => {
   localStorage.removeItem("token");
-  window.location.href = "http://localhost:3000/signup";
+  window.location.href = "https://zerodha-ky1a.onrender.com/signup";
 };
 
   const menuClass = "menu";
