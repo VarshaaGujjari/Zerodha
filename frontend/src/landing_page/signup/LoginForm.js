@@ -22,14 +22,27 @@ function LoginForm() {
 
       console.log("Response from backend:", res.data);
 
-      localStorage.setItem("token", res.data.token);
-      localStorage.setItem("user", JSON.stringify(res.data.user));
+      // localStorage.setItem("token", res.data.token);
+      // localStorage.setItem("user", JSON.stringify(res.data.user));
 
       console.log("Token after saving:", localStorage.getItem("token"));
 
       alert("Login Successful!");
 
-      window.location.href = "http://localhost:3001";
+      // window.location.href = "http://localhost:3001";
+      // window.location.href =`http://localhost:3001/?token=${token}`;
+  //     window.location.href =
+  // `http://localhost:3001/?token=${response.data.token}`;
+  const token = res.data.token;
+
+localStorage.setItem("token", token);
+localStorage.setItem("user", JSON.stringify(res.data.user));
+
+// window.location.href = `http://localhost:3001/?token=${token}`;
+const user = encodeURIComponent(JSON.stringify(res.data.user));
+
+window.location.href =
+  `http://localhost:3001/?token=${res.data.token}&user=${user}`;
       // window.location.href = "/dashboard";
       // navigate("/dashboard");
 

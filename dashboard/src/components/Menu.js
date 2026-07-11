@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 
-import { Link } from "react-router-dom";
+import { Link , useNavigate } from "react-router-dom";
 
 const Menu = () => {
+
+  const navigate = useNavigate();
+
+
   const [selectedMenu, setSelectedMenu] = useState(0);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
 
@@ -14,8 +18,14 @@ const Menu = () => {
     setIsProfileDropdownOpen(!isProfileDropdownOpen);
   };
 
+  const handleLogout = () => {
+  localStorage.removeItem("token");
+  window.location.href = "http://localhost:3000/signup";
+};
+
   const menuClass = "menu";
   const activeMenuClass = "menu selected";
+  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <div className="menu-container">
@@ -90,10 +100,42 @@ const Menu = () => {
           </li>
         </ul>
         <hr />
-        <div className="profile" onClick={handleProfileClick}>
+        {/* <div className="profile" onClick={handleProfileClick}>
           <div className="avatar">ZU</div>
           <p className="username">USERID</p>
-        </div>
+        </div> */}
+
+        <div className="profile">
+
+  <div
+    className="profile-header"
+    onClick={handleProfileClick}
+  >
+    <div className="avatar">ZU</div>
+    <p className="username">{user ? user.name : "User"}</p>
+  </div>
+
+  {isProfileDropdownOpen && (
+
+    <div className="profile-menu">
+
+      <button>
+        Profile
+      </button>
+
+      <button>
+        Settings
+      </button>
+
+      <button onClick={handleLogout}>
+        Logout
+      </button>
+
+    </div>
+
+  )}
+
+</div>
       </div>
     </div>
   );

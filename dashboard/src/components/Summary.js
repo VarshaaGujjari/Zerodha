@@ -182,6 +182,8 @@ const Summary = () => {
         </div>
 
         <hr className="divider" />
+
+       
       </div>
     </>
   );

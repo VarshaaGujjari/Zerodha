@@ -1,4 +1,5 @@
-import React from "react";
+// import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 
 import Apps from "./Apps";
@@ -11,7 +12,45 @@ import Summary from "./Summary";
 import WatchList from "./WatchList";
 import { GeneralContextProvider } from "./GeneralContext";
 
+
 const Dashboard = () => {
+
+  // useEffect(() => {
+  //   const params = new URLSearchParams(window.location.search);
+  //   const token = params.get("token");
+
+  //   if (token) {
+  //     localStorage.setItem("token", token);
+
+  //     // Remove token from URL
+  //     window.history.replaceState({}, document.title, "/");
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const token = params.get("token");
+    const user = params.get("user");
+
+    if (token) {
+        localStorage.setItem("token", token);
+
+        // Remove only the query string
+        window.history.replaceState(
+            {},
+            document.title,
+            window.location.pathname
+        );
+      }
+
+      if (user) {
+          localStorage.setItem(
+              "user",
+              decodeURIComponent(user)
+          );
+      }
+  }, []);
+
   return (
     <div className="dashboard-container">
       <GeneralContextProvider>
