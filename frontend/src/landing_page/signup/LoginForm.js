@@ -12,6 +12,8 @@ function LoginForm() {
     try {
       const res = await axios.post(
         "http://localhost:3002/auth/login",
+        // "https://zerodha-dashboard-an73.onrender.com/auth/login",
+        "https://zerodha-ky1a.onrender.com/auth/login",
         {
           email,
           password,

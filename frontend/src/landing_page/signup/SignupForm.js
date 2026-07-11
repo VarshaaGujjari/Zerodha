@@ -12,7 +12,10 @@ function SignupForm() {
     e.preventDefault();
 
     try {
-    await axios.post("http://localhost:3002/auth/register", { name, email, password });
+    await axios.post(
+      // "http://localhost:3002/auth/register",
+      "https://zerodha-ky1a.onrender.com/auth/register",
+      { name, email, password });
     alert("Signup Successful! Please log in.");
     window.location.href = "/Signup"; // back to the auth page, now showing login
   } catch (err) {
