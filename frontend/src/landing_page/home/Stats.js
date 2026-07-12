@@ -3,11 +3,7 @@ import React from 'react'
 function Stats() {
     return ( 
     <div className='container p-4 '>
-
         <div className='row p-4 align-items-center'>
-            
-
-        
             <div className='col-6 p-4'>
                 <h2 className='mb-5 fs-2'>Trust with confidence</h2>
 
@@ -30,9 +26,7 @@ function Stats() {
                             <a href='' className='text-decoration-none'>Try Kite demo<i class="fa-solid fa-arrow-right"></i></a>
                         </div>
                 </div>
-        
         </div>
-
     </div>  
     );
 }

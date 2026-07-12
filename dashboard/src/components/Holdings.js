@@ -18,7 +18,8 @@ const Holdings = () => {
 
         const res = await axios.get(
           // "http://localhost:3002/holdings",
-          "https://zerodha-ky1a.onrender.com/holdings",
+          // "https://zerodha-ky1a.onrender.com/holdings",
+          `${process.env.REACT_APP_BACKEND_URL}/holdings`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

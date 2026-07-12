@@ -18,7 +18,8 @@ const Positions = () => {
 
         const res = await axios.get(
           // "http://localhost:3002/positions",
-          "https://zerodha-ky1a.onrender.com/positions",
+          // "https://zerodha-ky1a.onrender.com/positions",
+          `${process.env.REACT_APP_BACKEND_URL}/positions`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

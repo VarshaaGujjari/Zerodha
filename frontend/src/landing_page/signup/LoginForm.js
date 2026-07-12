@@ -13,7 +13,8 @@ function LoginForm() {
       const res = await axios.post(
         "http://localhost:3002/auth/login",
         // "https://zerodha-dashboard-an73.onrender.com/auth/login",
-        "https://zerodha-ky1a.onrender.com/auth/login",
+        // "https://zerodha-ky1a.onrender.com/auth/login",
+        `${process.env.REACT_APP_BACKEND_URL}/auth/login`,
         {
           email,
           password,
@@ -32,8 +33,11 @@ localStorage.setItem("user", JSON.stringify(res.data.user));
 
 const user = encodeURIComponent(JSON.stringify(res.data.user));
 
-window.location.href =
-  `http://localhost:3001/?token=${res.data.token}&user=${user}`;
+// window.location.href =
+//   `http://localhost:3001/?token=${res.data.token}&user=${user}`;
+
+  window.location.href =
+  `${process.env.REACT_APP_DASHBOARD_URL}/?token=${res.data.token}&user=${user}`;
   
     } catch (err) {
       console.log(err);

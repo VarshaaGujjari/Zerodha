@@ -10,7 +10,6 @@ import Footer from '../Footer';
 
 function HomePage() {
     return ( 
-
         <>
             {/* <Navbar/> */}
             <Hero/>
@@ -18,10 +17,8 @@ function HomePage() {
             <Stats/>
             <Pricing/>
             <Education/>
-             <OpenAccount/>
-            {/* <h1>Home Page Works</h1> */}
+            <OpenAccount/>
             {/* <Footer></Footer> */}
-            
         </>
      );
 }

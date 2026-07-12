@@ -4,9 +4,7 @@ function Pricing() {
     return ( 
     
     <div className='container mt-2 p-4'>
-
         <div className='row align-items-center p-4'>
-
             <div className='col-4  p-4'>
                 <h2 className='mb-3 fs-2'>Unbeatable pricing</h2>
                 <p className='text-muted'>We pioneered the concept of discount broking and price transparency in India. Flat fees and no hidden charges.</p>
@@ -25,12 +23,9 @@ function Pricing() {
                         <h1 className='mb-1'>₹20</h1>
                         <p>Intraday & F&O</p>
                     </div>
-
                 </div>
             </div>
-
         </div>
-
     </div>  );
 }
 

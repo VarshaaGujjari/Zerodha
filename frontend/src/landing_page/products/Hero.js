@@ -9,7 +9,6 @@ function Hero() {
                 <p className='mt-3'>Check out our <a href='#' className='text-decoration-none'>investment offerings  →</a></p>
             </div>
         </div>
-      
      );
 }
 

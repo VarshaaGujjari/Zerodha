@@ -24,7 +24,8 @@ const WatchList = () => {
     axios
       .get(
         // "http://localhost:3002/stocks",
-        "https://zerodha-ky1a.onrender.com/stocks"
+        // "https://zerodha-ky1a.onrender.com/stocks",
+        `${process.env.REACT_APP_BACKEND_URL}/stocks`,
       )
       .then((res) => {
         setStocks(res.data);

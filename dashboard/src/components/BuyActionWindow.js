@@ -28,7 +28,8 @@ const BuyActionWindow = ({ uid }) => {
 
       const response = await axios.post(
         // "http://localhost:3002/orders",
-        "https://zerodha-ky1a.onrender.com/orders",
+        // "https://zerodha-ky1a.onrender.com/orders",
+        `${process.env.REACT_APP_BACKEND_URL}/orders`,
         {
           name: uid,
           qty: Number(stockQuantity),
