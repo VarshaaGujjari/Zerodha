@@ -21,8 +21,8 @@ const SellActionWindow = ({ uid }) => {
         return;
       }
 
-      if (Number(stockQuantity) > Number(token.qty)) {
-          alert("You don't have enough shares to sell.");
+      if (Number(stockQuantity) <= 0 || Number(stockPrice) <= 0) {
+          alert("Please enter a valid quantity and price.");
           return;
       }
 

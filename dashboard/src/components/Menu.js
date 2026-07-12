@@ -22,7 +22,8 @@ const Menu = () => {
   localStorage.removeItem("token");
   // window.location.href = "https://zerodha-ky1a.onrender.com/signup";
   // window.location.href = "https://zerodha-kite-idll.onrender.com/signup";
-  window.location.href = `${process.env.REACT_APP_FRONTEND_URL}/signup`;
+  // window.location.href = `${process.env.REACT_APP_FRONTEND_URL}/signup`;
+  window.location.href = `${process.env.REACT_APP_BACKEND_URL}/auth/login`;
 };
 
   const menuClass = "menu";

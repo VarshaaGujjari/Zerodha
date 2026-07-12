@@ -7,6 +7,15 @@ const createOrder = async (req, res) => {
   try {
     console.log("Order received:", req.body);
 
+    const qty = Number(req.body.qty);
+    const price = Number(req.body.price);
+
+    if (qty <= 0 || price <= 0) {
+      return res.status(400).json({
+        message: "Quantity and price must be greater than 0.",
+      });
+    }
+
     if (req.body.mode === "BUY") {
 
       let holding = await HoldingsModel.findOne({
@@ -108,7 +117,7 @@ const createOrder = async (req, res) => {
 
   // Reduce holding quantity
   holding.qty -= Number(req.body.qty);
-  holding.price = Number(req.body.price);
+  // holding.price = Number(req.body.price);
 
   if (holding.qty === 0) {
     await HoldingsModel.deleteOne({
@@ -133,7 +142,7 @@ const createOrder = async (req, res) => {
 
   if (position) {
     position.qty -= Number(req.body.qty);
-    position.price = Number(req.body.price);
+    // position.price = Number(req.body.price);
 
     if (position.qty === 0) {
       await PositionsModel.deleteOne({
