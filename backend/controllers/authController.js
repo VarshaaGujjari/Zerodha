@@ -53,15 +53,12 @@ const loginUser = async (req, res) => {
 
         const { email, password } = req.body;
 
-        // Check if all fields are provided
-        if (!email || !password) {
-            return res.status(400).json({
-                message: "Please fill all the fields."
-            });
-        }
+        console.log("Email received:", email);
+        console.log("Password received:", password);
 
         // Find user
         const user = await UserModel.findOne({ email });
+        console.log("User found:", user);
 
         if (!user) {
             return res.status(404).json({
@@ -69,8 +66,20 @@ const loginUser = async (req, res) => {
             });
         }
 
+
+
+        // Check if all fields are provided
+        // if (!email || !password) {
+        //     return res.status(400).json({
+        //         message: "Please fill all the fields."
+        //     });
+        // }
+
+        
+
         // Compare password
         const isMatch = await bcrypt.compare(password, user.password);
+        console.log("Password matched:", isMatch);
 
         if (!isMatch) {
             return res.status(401).json({

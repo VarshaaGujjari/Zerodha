@@ -31,9 +31,9 @@ function SignupForm() {
       );
 
       alert("Signup Successful! Please log in.");
-      // navigate("/signup");
+      navigate("/signup");
       // window.location.href = `${process.env.REACT_APP_BACKEND_URL}/auth/register`
-      window.location.href = `${process.env.REACT_APP_FRONTEND_URL}/signup`;
+      // window.location.href = `${process.env.REACT_APP_FRONTEND_URL}/signup`;
 
     } catch (err) {
       alert(err.response?.data?.message || "Signup Failed");
