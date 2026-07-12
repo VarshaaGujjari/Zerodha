@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function SignupForm() {
   const [name, setName] = useState("");
@@ -17,7 +18,9 @@ function SignupForm() {
       "https://zerodha-ky1a.onrender.com/auth/register",
       { name, email, password });
     alert("Signup Successful! Please log in.");
-    window.location.href = "/Signup"; // back to the auth page, now showing login
+    // window.location.href = "/Signup"; 
+    navigate("/signup");
+    // back to the auth page, now showing login
   } catch (err) {
     alert(err.response?.data?.message || "Signup Failed");
   }

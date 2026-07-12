@@ -1,20 +1,22 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 function Hero() {
     return ( 
         <>
         <div className='container p-5'>
             <div className='row text-center'>
-                <img src='media/images/homeHero.png' alt='HeroImage' className='mb-5' />
+                <img src='/media/images/homeHero.png' alt='HeroImage' className='mb-5' />
 
                 <h1 className='mt-5'>Invest in Everything</h1>
         <p>Online platform to invest in stocks, derivatives, mutual funds, ETFs, bonds and more.</p>
-        <a href = "https://zerodha-kite-idll.onrender.com/signup" target="_blank" rel="noopener noreferrer" style={{ textDecoration: "none", color: "white" }}>
+        
+        <Link to="/signup">
         <button className='p-2 btn btn-primary fs-5 ' style = {{width:"20%", margin: "0 auto"}}>
             
             Sign up for free
             </button>
-            </a>
+            </Link>
             
             </div>
             
