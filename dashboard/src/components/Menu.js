@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+// import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import { Link , useNavigate } from "react-router-dom";
 
@@ -20,16 +21,21 @@ const Menu = () => {
 
   const handleLogout = () => {
   localStorage.removeItem("token");
-  // window.location.href = "https://zerodha-ky1a.onrender.com/signup";
-  // window.location.href = "https://zerodha-kite-idll.onrender.com/signup";
-  // window.location.href = `${process.env.REACT_APP_FRONTEND_URL}/signup`;
-  // window.location.href = `${process.env.REACT_APP_BACKEND_URL}/auth/login`;
+   localStorage.removeItem("user");
   window.location.href = "https://zerodha-kite-idll.onrender.com/signup";
 };
 
   const menuClass = "menu";
   const activeMenuClass = "menu selected";
-  const user = JSON.parse(localStorage.getItem("user"));
+  // const user = JSON.parse(localStorage.getItem("user"));
+  const [user, setUser] = useState(null);
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+
+        if (storedUser) {
+            setUser(JSON.parse(storedUser));
+        }
+    }, []);
 
   return (
     <div className="menu-container">

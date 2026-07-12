@@ -15,29 +15,29 @@ import { GeneralContextProvider } from "./GeneralContext";
 
 const Dashboard = () => {
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const token = params.get("token");
-    const user = params.get("user");
+  // useEffect(() => {
+  //   const params = new URLSearchParams(window.location.search);
+  //   const token = params.get("token");
+  //   const user = params.get("user");
 
-    if (token) {
-        localStorage.setItem("token", token);
+  //   if (token) {
+  //       localStorage.setItem("token", token);
 
-        // Remove only the query string
-        window.history.replaceState(
-            {},
-            document.title,
-            window.location.pathname
-        );
-      }
+  //       // Remove only the query string
+  //       window.history.replaceState(
+  //           {},
+  //           document.title,
+  //           window.location.pathname
+  //       );
+  //     }
 
-      if (user) {
-          localStorage.setItem(
-              "user",
-              decodeURIComponent(user)
-          );
-      }
-  }, []);
+  //     if (user) {
+  //         localStorage.setItem(
+  //             "user",
+  //             decodeURIComponent(user)
+  //         );
+  //     }
+  // }, []);
 
   return (
     <div className="dashboard-container">
