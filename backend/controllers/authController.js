@@ -69,11 +69,11 @@ const loginUser = async (req, res) => {
 
 
         // Check if all fields are provided
-        // if (!email || !password) {
-        //     return res.status(400).json({
-        //         message: "Please fill all the fields."
-        //     });
-        // }
+        if (!email || !password) {
+            return res.status(400).json({
+                message: "Please fill all the fields."
+            });
+        }
 
         
 
